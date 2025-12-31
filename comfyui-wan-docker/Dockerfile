@@ -12,7 +12,11 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Установка rclone
-RUN curl https://rclone.org/install.sh | bash
+RUN apt-get update && \
+    apt-get install -y unzip curl && \
+    curl https://rclone.org/install.sh | bash && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Клонирование ComfyUI
 RUN git clone https://github.com/comfyanonymous/ComfyUI.git && \
