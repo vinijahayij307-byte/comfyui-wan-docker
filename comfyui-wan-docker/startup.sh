@@ -9,7 +9,7 @@ mkdir -p ~/.config/rclone
 if [ -z "$RCLONE_CONFIG_DATA" ]; then
     echo "ERROR: RCLONE_CONFIG_DATA is empty! Set it in Vast.ai env vars."
 else
-    echo "$RCLONE_CONFIG_DATA" > ~/.config/rclone/rclone.conf
+    echo "$RCLONE_CONFIG_DATA" | base64 -d > ~/.config/rclone/rclone.conf
 fi
 
 # Функция для умного копирования
